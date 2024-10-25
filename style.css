@@ -1,6 +1,6 @@
 body {
     background-color: #f4f4f9;
-    font-family: 'Arial', sans-serif;
+    font-family: 'IRANSans', sans-serif;
 }
 
 .chat-card {
@@ -41,9 +41,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.card-footer {
-    border-top: none;
-    background-color: #f4f4f9;
 }
