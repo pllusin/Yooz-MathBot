@@ -1,0 +1,49 @@
+body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.chat-card {
+    width: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.chat-box {
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.message {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.3s ease forwards;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: end;
+}
+
+.bot-message {
+    background-color: #eeeeee;
+    color: #333333;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-footer {
+    border-top: none;
+    background-color: #f4f4f9;
+}
