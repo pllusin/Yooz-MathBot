@@ -1,24 +1,18 @@
-let youzParser = new YouzParser();
-let inputCode = ''; 
+let youzParser = new YoozParser();
+let inputCode = `
+( + حاصل جمع *1 و *2 چیست؟ - *1 + *2 نتیجه می‌دهد: _ جمع اعداد برابر است با *1 + *2 )
+( + حاصل تفریق *1 از *2 چقدر است؟ - *2 - *1 نتیجه می‌دهد: _ تفریق برابر است با *2 - *1 )
+( + حاصل ضرب *1 و *2 چقدر می‌شود؟ - *1 * *2 نتیجه می‌دهد: _ ضرب اعداد برابر است با *1 * *2 )
+( + حاصل تقسیم *1 بر *2 چیست؟ - *2 !== 0 ? (*1 / *2).toFixed(2) : 'تقسیم بر صفر ممکن نیست!' )
+`;
 
-function loadFile(callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'number.yooz', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            inputCode = xhr.responseText;
-            callback(inputCode);
-        }
-    };
-    xhr.send();
-}
+youzParser.parse(inputCode);
 
 function addMessage(message, className) {
     const messageElement = document.createElement('div');
     messageElement.className = `message ${className} d-flex align-items-center p-2`;
     messageElement.innerText = message;
 
-    // اضافه کردن پیام به چت‌باکس و انیمیشن
     document.getElementById('chat-box').appendChild(messageElement);
     document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
 }
@@ -31,9 +25,6 @@ document.getElementById("btn").addEventListener("click", (event) => {
     addMessage(userMessage, 'user-message');
     document.getElementById("txt-input").value = '';
 
-    loadFile((data) => {
-        youzParser.parse(data);
-        const response = youzParser.getResponse(userMessage);
-        addMessage(response, 'bot-message');
-    });
+    const response = youzParser.getResponse(userMessage);
+    addMessage(response, 'bot-message');
 });
